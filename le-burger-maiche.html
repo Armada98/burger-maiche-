@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Burger Maîche — Kebab, Burgers & Tacos · Livraison offerte</title>
+<meta name="description" content="Le Burger Maîche : kebab, burgers maison, tacos, pizzas et bien plus. 14 rue Montalembert, 25120 Maîche. Livraison OFFERTE sur le plateau de Maîche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#ffd400;--yellow-dark:#f2c200;--black:#0d0d0d;--ink:#171717;
+    --red:#e2231a;--red-deep:#b31410;--white:#fff;--cream:#fffdf3;--gray:#6b6b6b;
+    --shadow:0 14px 40px rgba(0,0,0,.35);--shadow-hard:6px 6px 0 var(--black);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',system-ui,sans-serif;background:var(--black);color:var(--cream);line-height:1.5;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  [hidden]{display:none!important}
+  h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.5px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+
+  .sticker{display:inline-block;background:var(--yellow);color:var(--black);padding:8px 18px;transform:skewX(-9deg);font-family:'Barlow Semi Condensed';font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:14px}
+  .sticker span{display:inline-block;transform:skewX(9deg)}
+  .sticker--red{background:var(--red);color:var(--white)}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:var(--black);border-bottom:3px solid var(--yellow)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:14px}
+  .brand{font-family:'Anton';font-size:26px;letter-spacing:1px;cursor:pointer;white-space:nowrap;color:var(--white)}
+  .brand b{color:var(--yellow)}.brand i{color:var(--red);font-style:normal}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:'Barlow Semi Condensed';font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:1px;color:var(--white);cursor:pointer;transition:.15s}
+  .nav-links a:hover{color:var(--yellow)}
+  .nav-call{color:var(--yellow)!important;display:inline-flex;gap:7px;align-items:center}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .nav-order{background:var(--red);color:var(--white);border:0;padding:12px 20px;cursor:pointer;font-family:'Anton';font-size:16px;letter-spacing:1px;text-transform:uppercase;transform:skewX(-8deg);transition:.15s;box-shadow:3px 3px 0 rgba(0,0,0,.4);white-space:nowrap}
+  .nav-order span{display:inline-block;transform:skewX(8deg)}
+  .nav-order:hover{background:var(--yellow);color:var(--black)}
+  .burger-btn{display:none;background:none;border:0;cursor:pointer;padding:6px}
+  .burger-btn span{display:block;width:28px;height:3px;background:var(--yellow);margin:5px 0;border-radius:3px}
+
+  /* HERO (noir) */
+  .hero{background:radial-gradient(ellipse at 50% 0%,#232323 0%,var(--black) 60%);color:var(--cream);position:relative;overflow:hidden;padding:66px 0 60px}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:22px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 22px,transparent 22px 44px);opacity:.10}
+  .hero .wrap{position:relative;z-index:1;text-align:center}
+  .hero .eyebrow{margin-bottom:20px}
+  .hero h1{font-size:clamp(56px,13vw,140px);color:var(--white)}
+  .hero h1 .yellow{color:var(--yellow);text-shadow:0 0 44px rgba(255,212,0,.5)}
+  .hero h1 .red{color:var(--red)}
+  .hero .sub{max-width:600px;margin:18px auto 0;font-size:19px;font-weight:600;color:#d8d2c4}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;font-family:'Anton';font-size:18px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:0;transform:skewX(-8deg);transition:.15s}
+  .btn span{display:inline-block;transform:skewX(8deg)}
+  .btn-red{background:var(--red);color:var(--white);box-shadow:5px 5px 0 var(--yellow)}
+  .btn-red:hover{transform:skewX(-8deg) translate(-2px,-2px);box-shadow:7px 7px 0 var(--yellow)}
+  .btn-yellow{background:var(--yellow);color:var(--black);box-shadow:5px 5px 0 rgba(255,212,0,.25)}
+  .btn-yellow:hover{transform:skewX(-8deg) translate(-2px,-2px)}
+  .btn-outline{background:transparent;color:var(--yellow);box-shadow:inset 0 0 0 3px var(--yellow)}
+  .btn-outline:hover{background:var(--yellow);color:var(--black)}
+
+  .delivery-banner{margin-top:40px;display:inline-flex;align-items:center;gap:14px;background:var(--red);color:var(--white);padding:14px 26px;transform:skewX(-8deg);box-shadow:6px 6px 0 var(--black)}
+  .delivery-banner>*{transform:skewX(8deg)}
+  .delivery-banner .scoot{font-size:26px}
+  .delivery-banner b{font-family:'Anton';font-weight:400;letter-spacing:1px;font-size:21px;color:var(--yellow)}
+
+  .status{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-weight:800;font-size:15px;padding:9px 18px;background:var(--ink);color:var(--cream);border:2px solid var(--yellow)}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--gray)}
+  .status.open .dot{background:#22c55e;box-shadow:0 0 10px #22c55e}
+  .status.closed .dot{background:var(--red)}
+
+  /* SECTIONS */
+  section{padding:66px 0;position:relative}
+  .sec-dark{background:var(--black)}
+  .sec-head{margin-bottom:38px;text-align:center}
+  .sec-head .sticker{margin-bottom:14px}
+  .sec-head h2{font-size:clamp(38px,7vw,72px);color:var(--white)}
+  .sec-head h2 em{font-style:normal;color:var(--yellow)}
+
+  .carte-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--black);border:0;padding:12px 20px;font-family:'Anton';font-size:15px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transform:skewX(-8deg);transition:.15s;box-shadow:4px 4px 0 rgba(255,212,0,.25)}
+  .back-btn span{display:inline-block;transform:skewX(8deg)}
+  .back-btn:hover{background:var(--white)}
+
+  /* MENU cards */
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;align-items:start;margin-top:8px}
+  .card{background:var(--white);color:var(--black);border:3px solid var(--black);box-shadow:var(--shadow-hard);position:relative;padding:0 0 20px}
+  .card-head{background:var(--yellow);border-bottom:3px solid var(--black);padding:14px 20px;display:flex;align-items:center;gap:10px}
+  .card-head h3{font-size:26px;color:var(--black)}
+  .card-body{padding:16px 20px 0}
+  .card .note{color:var(--gray);font-size:13.5px;font-style:italic;margin-bottom:14px;font-weight:600}
+  .item{display:flex;align-items:baseline;gap:10px;padding:7px 0}
+  .item .name{font-weight:700;font-size:16px;color:var(--black)}
+  .item .name small{display:block;font-weight:600;font-size:12.5px;color:var(--gray);font-style:italic;margin-top:1px}
+  .item .lead{flex:1;border-bottom:2px dotted #cfcfcf;transform:translateY(-4px);min-width:14px}
+  .item .price{font-family:'Anton';font-weight:400;color:var(--red);font-size:18px;white-space:nowrap;letter-spacing:.5px}
+  .item .price.free{color:#16a34a}
+  .tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:2px 9px;margin-left:8px;vertical-align:middle;transform:skewX(-8deg)}
+  .tag span{display:inline-block;transform:skewX(8deg)}
+  .subline{font-size:12px;color:var(--red);margin:12px 0 2px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+  .formule{grid-column:1/-1;background:var(--red);color:var(--white);border:3px solid var(--black);box-shadow:var(--shadow-hard);padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+  .formule .big{font-family:'Anton';font-size:clamp(24px,4.5vw,38px);color:var(--yellow)}
+  .formule .big span{color:var(--white)}
+  .formule p{font-weight:700;max-width:460px;color:#ffe9e8}
+
+  /* HORAIRES + CONTACT */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .info-card{background:var(--white);color:var(--black);border:3px solid var(--black);box-shadow:var(--shadow-hard);padding:26px}
+  .info-card>h3{font-size:28px;color:var(--black);margin-bottom:16px;display:inline-block;background:var(--yellow);padding:4px 12px;transform:skewX(-8deg)}
+  .info-card>h3 span{display:inline-block;transform:skewX(8deg)}
+  .hours-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:2px solid #eee;font-size:16px}
+  .hours-row:last-child{border-bottom:0}
+  .hours-row .day{font-weight:800;text-transform:capitalize;min-width:92px}
+  .hours-row .times{text-align:right;color:var(--gray);font-weight:700}
+  .hours-row.today{background:var(--yellow);margin:0 -14px;padding:11px 14px;border-bottom:0}
+  .hours-row.today .times{color:var(--black)}
+  .hours-row .closed{color:var(--red);font-weight:800}
+  .today-badge{font-size:10px;background:var(--red);color:#fff;font-weight:800;padding:1px 8px;margin-left:8px;vertical-align:middle;letter-spacing:.5px}
+  .contact-line{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:2px solid #eee}
+  .contact-line:last-of-type{border-bottom:0}
+  .contact-line .ico{width:44px;height:44px;flex-shrink:0;background:var(--yellow);border:2px solid var(--black);display:grid;place-items:center;font-size:20px}
+  .contact-line .lbl{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:800}
+  .contact-line .val{font-size:18px;font-weight:800;color:var(--black)}
+  .contact-line .val a{color:var(--red)}
+  .map-btn{display:inline-flex;align-items:center;gap:9px;margin-top:20px;background:var(--black);color:var(--yellow);padding:13px 22px;font-family:'Anton';letter-spacing:1px;text-transform:uppercase;transform:skewX(-8deg);transition:.15s;box-shadow:4px 4px 0 var(--red)}
+  .map-btn span{display:inline-block;transform:skewX(8deg)}
+  .map-btn:hover{background:var(--red);color:#fff}
+
+  /* FLOATING */
+  .float-order{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--red);color:#fff;border:0;padding:16px 24px;font-family:'Anton';font-size:18px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transform:skewX(-8deg);box-shadow:5px 5px 0 var(--yellow);transition:.15s;display:inline-flex;gap:8px;align-items:center}
+  .float-order span{display:inline-block;transform:skewX(8deg)}
+  .float-order:hover{background:var(--yellow);color:var(--black)}
+
+  /* MODAL + WIZARD */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:100;display:grid;place-items:center;padding:14px}
+  .modal{background:var(--white);color:var(--black);border:4px solid var(--black);width:100%;max-width:540px;max-height:94vh;overflow:hidden;box-shadow:10px 10px 0 var(--yellow);position:relative;display:flex;flex-direction:column}
+  .wiz-head{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--yellow);border-bottom:4px solid var(--black);position:relative}
+  .wiz-back{border:2px solid var(--black);background:#fff;width:40px;height:40px;font-size:18px;cursor:pointer;font-weight:800;line-height:1;flex-shrink:0}
+  .wiz-back:hover{background:var(--black);color:var(--yellow)}
+  .wiz-titles{flex:1;min-width:0}
+  .wiz-title{font-family:'Anton';font-size:24px;color:var(--black);text-transform:uppercase;line-height:1}
+  .wiz-sub{font-size:12.5px;font-weight:800;color:#3a3400;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+  .modal-close{border:2px solid var(--black);background:#fff;color:var(--black);width:40px;height:40px;font-size:18px;cursor:pointer;font-weight:800;line-height:1;flex-shrink:0}
+  .modal-close:hover{background:var(--red);color:#fff;border-color:var(--red)}
+  .wiz-body{padding:18px 20px;display:flex;flex-direction:column;gap:11px;overflow:auto}
+  .wiz-foot{padding:14px 20px 18px;display:flex;flex-direction:column;gap:9px;border-top:2px solid #eee;background:#fff}
+  .wiz-hint{font-size:13px;font-weight:800;color:var(--gray);text-align:center;text-transform:uppercase;letter-spacing:.5px}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .cat-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border:2px solid var(--black);background:#fff;cursor:pointer;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.4px;transition:.12s;color:var(--black)}
+  .cat-btn .emo{font-size:26px}
+  .cat-btn:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--black)}
+  .opt-btn{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:14px 16px;border:2px solid var(--black);background:#fff;cursor:pointer;font-weight:700;text-align:left;transition:.12s;color:var(--black)}
+  .opt-btn:hover{background:var(--yellow)}
+  .opt-btn .op-name small{display:block;font-weight:600;font-size:12px;color:var(--gray);font-style:italic}
+  .opt-btn .op-price{font-family:'Anton';color:var(--red);white-space:nowrap;font-size:18px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:11px 15px;border:2px solid var(--black);background:#fff;cursor:pointer;font-weight:700;transition:.1s;user-select:none;color:var(--black)}
+  .chip.on{background:var(--black);color:var(--yellow)}
+  .chip.dis{opacity:.4;pointer-events:none}
+  .wiz-next{background:var(--red);color:#fff;border:0;padding:14px;font-family:'Anton';font-size:18px;letter-spacing:1px;cursor:pointer;text-transform:uppercase;box-shadow:4px 4px 0 var(--black);transition:.12s}
+  .wiz-next:disabled{opacity:.45;cursor:default;box-shadow:none}
+  .wiz-next:not(:disabled):hover{background:var(--black);color:var(--yellow)}
+  .wiz-second{background:transparent;border:2px solid var(--black);color:var(--black);padding:12px;font-family:'Barlow Semi Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:.12s}
+  .wiz-second:hover{background:var(--black);color:var(--yellow)}
+  .cart-empty{text-align:center;color:var(--gray);font-weight:700;padding:20px 0}
+  .cart-item{border:2px solid var(--black);padding:12px 14px;background:#fff}
+  .cart-item .ci-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .cart-item .ci-name{font-family:'Anton';font-size:17px;line-height:1.1}
+  .cart-item .ci-price{font-family:'Anton';color:var(--red);white-space:nowrap;font-size:17px}
+  .cart-item .ci-det{font-size:13px;color:var(--gray);font-weight:600;margin-top:5px;line-height:1.35}
+  .cart-item .ci-rm{border:0;background:none;color:var(--red);font-weight:800;cursor:pointer;font-size:15px;margin-top:6px}
+  .cart-total{display:flex;justify-content:space-between;align-items:center;font-family:'Anton';font-size:24px;padding:4px 2px}
+  .cart-total .ct-val{color:var(--red)}
+  .field label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--black);margin-bottom:6px}
+  .field input,.field textarea{width:100%;background:#f6f6f6;border:2px solid var(--black);padding:12px 14px;color:var(--black);font-family:'Barlow',sans-serif;font-size:15.5px;font-weight:600;transition:.15s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--red);background:#fff}
+  .field textarea{resize:vertical;min-height:70px}
+  .mode-toggle{display:flex;gap:10px}
+  .mode-toggle label{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;background:#f6f6f6;border:2px solid var(--black);padding:12px;font-weight:800;color:var(--black);transition:.15s;font-size:15px}
+  .mode-toggle input{display:none}
+  .mode-toggle label.active{background:var(--yellow)}
+  .form-status{font-size:15px;font-weight:800;padding:12px 14px;display:none;border:2px solid}
+  .form-status.ok{display:block;background:#eafbef;border-color:#16a34a;color:#15803d}
+  .form-status.err{display:block;background:#fdecec;border-color:var(--red);color:var(--red-deep)}
+  .call-instead{text-align:center;font-size:14px;color:var(--gray);font-weight:600}
+  .call-instead a{color:var(--red);font-weight:800}
+
+  /* FOOTER */
+  footer{background:var(--black);border-top:3px solid var(--yellow);padding:44px 0 32px;text-align:center}
+  footer .flogo{font-family:'Anton';font-size:34px;letter-spacing:1px;color:#fff}
+  footer .flogo b{color:var(--yellow)}footer .flogo i{color:var(--red);font-style:normal}
+  footer p{color:#bdbdbd;margin-top:10px;font-size:15px;font-weight:600}
+  footer .fcall{margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  footer .fcall a{color:var(--yellow);font-weight:800;border:2px solid var(--yellow);padding:9px 18px;transform:skewX(-8deg);transition:.15s}
+  footer .fcall a span{display:inline-block;transform:skewX(8deg)}
+  footer .fcall a:hover{background:var(--yellow);color:var(--black)}
+  .copyright{margin-top:26px;font-size:13px;color:#7a7a7a}
+
+  @media(max-width:880px){
+    .nav-links{position:fixed;inset:73px 0 auto 0;background:var(--black);flex-direction:column;gap:0;padding:8px 22px 20px;border-bottom:3px solid var(--yellow);transform:translateY(-180%);transition:.28s;box-shadow:var(--shadow)}
+    .nav-links.show{transform:translateY(0)}
+    .nav-links a{width:100%;padding:16px 0;border-bottom:1px solid #2a2a2a;font-size:18px}
+    .burger-btn{display:block}
+    .info-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:440px){
+    .nav-order .txt{display:none}.nav-order{padding:11px 14px}
+    .float-order .txt{display:none}
+    .cat-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" id="brandLink">LE&nbsp;<b>BURGER</b>&nbsp;<i>MAÎCHE</i></a>
+    <nav class="nav-links" id="navLinks">
+      <a class="js-carte">La carte</a>
+      <a class="js-home-link" data-target="horaires">Horaires</a>
+      <a class="js-home-link" data-target="contact">Contact</a>
+      <a href="tel:0953086288" class="nav-call">📞 09 53 08 62 88</a>
+    </nav>
+    <div class="nav-right">
+      <button class="nav-order js-open-order"><span>🛒 <span class="txt">Je commande</span></span></button>
+      <button class="burger-btn" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ACCUEIL ============ -->
+<div id="homeView">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="eyebrow"><span class="sticker"><span>Kebab · Burgers · Tacos · Pizzas</span></span></div>
+      <h1>LE <span class="yellow">BURGER</span><br><span class="red">MAÎCHE</span></h1>
+      <p class="sub">Frérot, t'as la dalle ? Kebab, burgers maison et tacos qui déchirent — à emporter ou livrés chez toi, tranquille.</p>
+      <div class="hero-cta">
+        <button class="btn btn-red js-open-order"><span>🛒 Je commande</span></button>
+        <a href="tel:0953086288" class="btn btn-yellow"><span>📞 J'appelle</span></a>
+        <button class="btn btn-outline js-carte"><span>La carte</span></button>
+      </div>
+      <div><span class="status" id="statusPill"><span class="dot"></span><span id="statusText">Vérification des horaires…</span></span></div>
+      <div><div class="delivery-banner"><span class="scoot">🛵</span><span>Livraison <b>OFFERTE</b> sur tout le plateau de Maîche</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec-dark" id="horaires">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sticker"><span>On se capte ?</span></span>
+        <h2>Horaires & <em>contact</em></h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3><span>🕒 Horaires</span></h3>
+          <div id="hoursList"></div>
+        </div>
+        <div class="info-card" id="contact">
+          <h3><span>📍 Nous trouver</span></h3>
+          <div class="contact-line"><div class="ico">📍</div><div><div class="lbl">Adresse</div><div class="val">14 rue Montalembert<br>25120 Maîche</div></div></div>
+          <div class="contact-line"><div class="ico">📞</div><div><div class="lbl">Téléphone</div><div class="val"><a href="tel:0953086288">09 53 08 62 88</a><br><a href="tel:0769158599">07 69 15 85 99</a></div></div></div>
+          <div class="contact-line"><div class="ico">🛵</div><div><div class="lbl">Livraison</div><div class="val">Offerte sur le plateau de Maîche</div></div></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Le+Burger+Maiche+14+rue+Montalembert+25120+Maiche" target="_blank" rel="noopener"><span>🗺️ Google Maps</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CARTE ============ -->
+<div id="carteView" hidden>
+  <section class="sec-dark" id="carte">
+    <div class="wrap">
+      <div class="carte-top">
+        <button class="back-btn js-home"><span>← Accueil</span></button>
+        <button class="btn btn-red js-open-order"><span>🛒 Je commande</span></button>
+      </div>
+      <div class="sec-head">
+        <span class="sticker sticker--red"><span>J'ai faim</span></span>
+        <h2>La <em>carte</em></h2>
+      </div>
+      <div class="menu-grid">
+        <div class="formule">
+          <div class="big">MENU : <span>+3 €</span> (frites + boisson)</div>
+          <p>Ajoute frites + boisson à n'importe quel plat pour seulement 3 € de plus.</p>
+        </div>
+        <div class="card"><div class="card-head"><h3>🍔 Burgers</h3></div><div class="card-body">
+          <div class="item"><span class="name">Burger 180g</span><span class="lead"></span><span class="price">12 €</span></div>
+          <div class="item"><span class="name">Burger maxi 360g</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Chicken</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Big chicken</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Le Burger spécial <small>onion rings, sauce spéciale</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="item"><span class="name">Le Burger mix <small>poulet et steak de bœuf</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="subline">Suppléments</div>
+          <div class="item"><span class="name">Supplément fromage</span><span class="lead"></span><span class="price">1 €</span></div>
+          <div class="item"><span class="name">Supplément œuf</span><span class="lead"></span><span class="price">1,5 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🌯 Tacos</h3></div><div class="card-body">
+          <p class="note">Viandes : steak, poulet, kebab, köfte, merguez, cordon bleu, tenders, nuggets, falafel.</p>
+          <div class="item"><span class="name">Tacos M — 1 viande</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Tacos L — 2 viandes</span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Tacos XL — 3 viandes</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Tacos XXL — 4 viandes</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Gratiné <small>cheddar, raclette, mozzarella</small></span><span class="lead"></span><span class="price free">OFFERT</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🥙 Sandwichs</h3></div><div class="card-body">
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Köfte</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Américain</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Cordon bleu <small>avec fromage</small></span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Falafel</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Toast</span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🌯 Dürüms <span class="tag"><span>Galettes</span></span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Dürüm kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Maxi kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Dürüm poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm steak</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Supplément viande</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🍽️ Assiettes</h3></div><div class="card-body">
+          <p class="note">Servies avec salade + frites + bulgur.</p>
+          <div class="item"><span class="name">Assiette kebab</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Assiette köfte</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette falafel</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette steak</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette merguez</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette mix <small>kebab + köfte</small></span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Assiette adana</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette pilons de poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette mix spécial 3 viandes</span><span class="lead"></span><span class="price">19 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>📦 Box</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tacos box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Box poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Box falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Bucket <small>frites, tenders, nuggets, onion rings, mozza sticks</small></span><span class="lead"></span><span class="price">12 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🍕 Pizzas</h3></div><div class="card-body">
+          <div class="item"><span class="name">Margharita</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">4 saisons</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Sucuk <small>saucisse turque</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">1 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🫓 Pides</h3></div><div class="card-body">
+          <div class="item"><span class="name">Pide fromage</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Pide viande hachée</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Pide épinards</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>viande et fromage</small></span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🌾 Lahmacun</h3></div><div class="card-body">
+          <div class="item"><span class="name">Seul</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>poulet et kebab</small></span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🥖 Paninis</h3></div><div class="card-body">
+          <div class="item"><span class="name">Panini kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini 4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini steak 180g</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini mix</span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🍟 Barquettes</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tenders <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Nuggets <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Mozza sticks <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Onion rings <small>5 unités</small></span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Falafel <small>5 unités</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="subline">Frites</div>
+          <div class="item"><span class="name">Petite</span><span class="lead"></span><span class="price">2,50 €</span></div>
+          <div class="item"><span class="name">Moyenne</span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Grande</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Frites avec cheddar</span><span class="lead"></span><span class="price">3,50 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🥗 Salades / Mezzés</h3></div><div class="card-body">
+          <div class="item"><span class="name">César</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Coban <small>salade du berger</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Salade composée de poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Salade de saison</span><span class="lead"></span><span class="price">7 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🍚 Collations <span class="tag"><span>Riz</span></span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Pois chiches</span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🎯 Menus</h3></div><div class="card-body">
+          <div class="item"><span class="name">Étudiant 1 <small>kebab + frites + boisson</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Étudiant 2 <small>tacos M + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Étudiant 3 <small>burger 100g + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Enfant <small>1 viande + frites + boisson + jouet</small></span><span class="lead"></span><span class="price">9 €</span></div>
+        </div></div>
+        <div class="card"><div class="card-head"><h3>🍰 Desserts</h3></div><div class="card-body">
+          <div class="item"><span class="name">Baklava <small>3 pièces</small></span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Tiramisu</span><span class="lead"></span><span class="price">4 €</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="flogo">LE <b>BURGER</b> <i>MAÎCHE</i></div>
+    <p>14 rue Montalembert · 25120 Maîche · Livraison OFFERTE sur le plateau de Maîche</p>
+    <div class="fcall">
+      <a href="tel:0953086288"><span>📞 09 53 08 62 88</span></a>
+      <a href="tel:0769158599"><span>📞 07 69 15 85 99</span></a>
+    </div>
+    <div class="copyright">© <span id="year"></span> Le Burger Maîche — Tous droits réservés.</div>
+  </div>
+</footer>
+
+<button class="float-order js-open-order" id="floatOrder"><span>🛒 <span class="txt">Je commande</span></span></button>
+
+<!-- MODALE / CONFIGURATEUR -->
+<div class="modal-overlay" id="orderModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="wiz-head">
+      <button class="wiz-back" id="wizBack" hidden>←</button>
+      <div class="wiz-titles">
+        <div class="wiz-title" id="wizTitle">Je commande</div>
+        <div class="wiz-sub" id="wizSub">Choisis une catégorie</div>
+      </div>
+      <button class="modal-close" id="closeOrder" aria-label="Fermer">✕</button>
+    </div>
+    <div class="wiz-body" id="wizBody"></div>
+    <div class="wiz-foot" id="wizFoot"></div>
+  </div>
+</div>
+
+<script>
+/* =================== DONNÉES =================== */
+const FORMSPREE = 'https://formspree.io/f/xqervwqg'; // identifiant Formspree du restaurant
+const MEATS  = ['Steak','Poulet','Kebab','Köfte','Merguez','Cordon bleu','Tenders','Nuggets','Falafel'];
+const SAUCES = ['Blanche','Algérienne','Samouraï','Harissa','Biggy','Andalouse','Barbecue','Ketchup','Mayonnaise','Curry','Sans sauce'];
+const GRATIN = ['Cheddar','Raclette','Mozzarella','Sans gratinage'];
+const DRINKS = ['Coca','Coca Zéro','Fanta','Sprite','Ice Tea','Oasis','Eau','Eau pétillante'];
+
+const opt   = (label,price,note)=>({label,price:price||0,note});
+const sauceStep = ()=>({id:'sauces',key:'Sauces',type:'multi',title:'Tes sauces',sub:'2 max',opts:SAUCES.map(s=>opt(s)),max:2,optional:true});
+const drinkStep = (showIf)=>({id:'boisson',key:'Boisson',type:'single',title:'Ta boisson',opts:DRINKS.map(d=>opt(d)),showIf});
+const menuSteps = ()=>[
+  {id:'formule',key:'Formule',type:'single',title:'Tu le prends en menu ?',opts:[opt('Non, seul'),opt('En menu +3€ (frites + boisson)',3)]},
+  drinkStep(sel=>sel.formule && sel.formule.price>0)
+];
+
+const CATS = [
+  {key:'pizza', emoji:'🍕', label:'Pizza', steps:[
+    {id:'choix',key:'Pizza',base:true,type:'single',title:'Quelle pizza ?',opts:[
+      opt('Margharita',7),opt('4 fromages',8),opt('4 saisons',9),opt('Kebab',10),opt('Sucuk',10,'saucisse turque')]},
+    {id:'supp',key:'Supplément',type:'single',title:'Un supplément ?',opts:[opt('Non merci'),opt('Avec supplément',1)]}
+  ]},
+  {key:'tacos', emoji:'🌯', label:'Tacos', menuOnly:false, steps:[
+    {id:'taille',key:'Taille',base:true,type:'single',title:'La taille ?',opts:[
+      Object.assign(opt('M — 1 viande',9),{meat:1}),
+      Object.assign(opt('L — 2 viandes',11),{meat:2}),
+      Object.assign(opt('XL — 3 viandes',13),{meat:3}),
+      Object.assign(opt('XXL — 4 viandes',15),{meat:4})]},
+    {id:'viandes',key:'Viandes',type:'multi',title:'Choisis tes viandes',opts:MEATS.map(m=>opt(m)),meatFrom:'taille'},
+    sauceStep(),
+    {id:'gratin',key:'Gratin',type:'single',title:'Le gratinage (offert)',opts:GRATIN.map(g=>opt(g))},
+    ...menuSteps()
+  ]},
+  {key:'kebab', emoji:'🥙', label:'Kebab', steps:[
+    {id:'format',key:'Format',base:true,type:'single',title:'Quel format ?',opts:[
+      opt('Sandwich kebab',8),opt('Galette (dürüm) kebab',8),opt('Maxi kebab',10)]},
+    sauceStep(),
+    {id:'supp',key:'Supplément viande',type:'single',title:'Supplément viande ?',opts:[opt('Non'),opt('Oui (+2€)',2)]},
+    ...menuSteps()
+  ]},
+  {key:'panini', emoji:'🥖', label:'Panini', steps:[
+    {id:'choix',key:'Panini',base:true,type:'single',title:'Quel panini ?',opts:[
+      opt('Panini kebab',8),opt('Panini poulet',9),opt('Panini 4 fromages',8),opt('Panini steak 180g',9),opt('Panini mix',10)]},
+    sauceStep(),
+    ...menuSteps()
+  ]},
+  {key:'burger', emoji:'🍔', label:'Burger', steps:[
+    {id:'choix',key:'Burger',base:true,type:'single',title:'Quel burger ?',opts:[
+      opt('Burger 180g',12),opt('Burger maxi 360g',15),opt('Chicken',8),opt('Big chicken',10),
+      opt('Le Burger spécial',17,'onion rings, sauce spéciale'),opt('Le Burger mix',17,'poulet et steak de bœuf')]},
+    sauceStep(),
+    {id:'supp',key:'Suppléments',type:'multi',title:'Suppléments (option)',opts:[opt('Fromage',1),opt('Œuf',1.5)],optional:true},
+    ...menuSteps()
+  ]},
+  {key:'sandwich', emoji:'🥪', label:'Sandwich', steps:[
+    {id:'choix',key:'Sandwich',base:true,type:'single',title:'Quel sandwich ?',opts:[
+      opt('Kebab',8),opt('Köfte',8),opt('Américain',9),opt('Cordon bleu',8,'avec fromage'),opt('Falafel',8),opt('Merguez',9),opt('Toast',8)]},
+    sauceStep(),
+    ...menuSteps()
+  ]},
+  {key:'durum', emoji:'🌯', label:'Dürüm', steps:[
+    {id:'choix',key:'Dürüm',base:true,type:'single',title:'Quel dürüm ?',opts:[
+      opt('Dürüm kebab',8),opt('Maxi kebab',10),opt('Dürüm poulet',9),opt('Dürüm steak',9),opt('Dürüm merguez',9),opt('Dürüm falafel',9)]},
+    sauceStep(),
+    {id:'supp',key:'Supplément viande',type:'single',title:'Supplément viande ?',opts:[opt('Non'),opt('Oui (+2€)',2)]},
+    ...menuSteps()
+  ]},
+  {key:'assiette', emoji:'🍽️', label:'Assiette', steps:[
+    {id:'choix',key:'Assiette',base:true,type:'single',title:'Quelle assiette ?',sub:'salade + frites + bulgur',opts:[
+      opt('Assiette kebab',13),opt('Assiette köfte',14),opt('Assiette falafel',14),opt('Assiette steak',14),
+      opt('Assiette merguez',14),opt('Assiette mix',15,'kebab + köfte'),opt('Assiette adana',16),
+      opt('Assiette poulet',16),opt('Assiette pilons de poulet',16),opt('Assiette mix spécial 3 viandes',19)]},
+    sauceStep()
+  ]},
+  {key:'pides', emoji:'🫓', label:'Pides', steps:[
+    {id:'choix',key:'Pide',base:true,type:'single',title:'Quel pide ?',opts:[
+      opt('Pide fromage',7),opt('Pide viande hachée',9),opt('Pide épinards',7),opt('Mix',10,'viande et fromage')]}
+  ]},
+  {key:'lahmacun', emoji:'🌾', label:'Lahmacun', steps:[
+    {id:'choix',key:'Lahmacun',base:true,type:'single',title:'Quel lahmacun ?',opts:[
+      opt('Seul',5),opt('Kebab',7),opt('Poulet',7),opt('Mix',8,'poulet et kebab')]},
+    sauceStep()
+  ]},
+  {key:'barquette', emoji:'🍟', label:'Barquette', steps:[
+    {id:'choix',key:'Barquette',base:true,type:'single',title:'Ta barquette ?',opts:[
+      opt('Tenders (5)',6),opt('Nuggets (5)',6),opt('Mozza sticks (5)',6),opt('Onion rings (5)',5),opt('Falafel (5)',7),
+      opt('Frites petite',2.5),opt('Frites moyenne',4),opt('Frites grande',5),opt('Frites cheddar',3.5)]},
+    {id:'sauces',key:'Sauce',type:'multi',title:'Une sauce ? (option)',opts:SAUCES.map(s=>opt(s)),max:2,optional:true}
+  ]},
+  {key:'salade', emoji:'🥗', label:'Salade', steps:[
+    {id:'choix',key:'Salade',base:true,type:'single',title:'Quelle salade ?',opts:[
+      opt('César',8),opt('Coban',7,'salade du berger'),opt('Salade composée de poulet',8),opt('Salade de saison',7)]}
+  ]},
+  {key:'collation', emoji:'🍚', label:'Collation', steps:[
+    {id:'choix',key:'Collation',base:true,type:'single',title:'Quelle collation ? (riz)',opts:[
+      opt('Pois chiches',6),opt('Kebab',7),opt('Poulet',8)]},
+    sauceStep(),
+    {id:'supp',key:'Supplément',type:'single',title:'Un supplément ?',opts:[opt('Non'),opt('Oui (+2€)',2)]}
+  ]},
+  {key:'menus', emoji:'🎯', label:'Menu', steps:[
+    {id:'choix',key:'Menu',base:true,type:'single',title:'Quel menu ?',opts:[
+      opt('Étudiant 1',10,'kebab + frites + boisson'),opt('Étudiant 2',11,'tacos M + frites + boisson'),
+      opt('Étudiant 3',11,'burger 100g + frites + boisson'),opt('Enfant',9,'1 viande + frites + boisson + jouet')]},
+    drinkStep(()=>true)
+  ]},
+  {key:'dessert', emoji:'🍰', label:'Dessert', steps:[
+    {id:'choix',key:'Dessert',base:true,type:'single',title:'Quel dessert ?',opts:[
+      opt('Baklava (3 pièces)',4),opt('Tiramisu',4)]}
+  ]}
+];
+
+/* =================== UTILITAIRES =================== */
+function fmtEuro(n){ if(n==null) return ''; return (Number.isInteger(n)? String(n) : n.toFixed(2).replace('.',',')) + ' €'; }
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* =================== ÉTAT =================== */
+let cart = [];      // articles finalisés
+let cur  = null;    // article en cours {cat, steps, idx, sel}
+
+const modal   = document.getElementById('orderModal');
+const wizBody  = document.getElementById('wizBody');
+const wizFoot  = document.getElementById('wizFoot');
+const wizTitle = document.getElementById('wizTitle');
+const wizSub   = document.getElementById('wizSub');
+const wizBack  = document.getElementById('wizBack');
+const navLinks = document.getElementById('navLinks');
+const floatOrder = document.getElementById('floatOrder');
+
+function setHead(t,s){ wizTitle.textContent=t; wizSub.textContent=s||''; }
+
+/* ---------- Écran : catégories ---------- */
+function screenCats(){
+  cur=null;
+  wizBack.hidden = cart.length===0;
+  wizBack.onclick = ()=> cart.length? screenCart() : null;
+  setHead('Je commande','Choisis une catégorie');
+  wizBody.innerHTML = '<div class="cat-grid">'+CATS.map((c,i)=>
+    `<button class="cat-btn" data-i="${i}"><span class="emo">${c.emoji}</span>${esc(c.label)}</button>`).join('')+'</div>';
+  wizBody.querySelectorAll('.cat-btn').forEach(b=>b.onclick=()=>startCat(+b.dataset.i));
+  wizFoot.innerHTML='';
+  if(cart.length){
+    const total = cart.reduce((s,i)=>s+i.price,0);
+    wizFoot.innerHTML = `<button class="wiz-next" id="goCart">🛒 Voir ma commande (${cart.length}) — ${fmtEuro(total)}</button>`;
+    document.getElementById('goCart').onclick=screenCart;
+  }
+}
+
+/* ---------- Démarrer une catégorie ---------- */
+function startCat(i){
+  const cat = CATS[i];
+  cur = { cat, steps: cat.steps, idx:-1, sel:{} };
+  goStep(1);
+}
+
+/* ---------- Navigation entre étapes ---------- */
+function goStep(dir){
+  let i = cur.idx + dir;
+  while(i>=0 && i<cur.steps.length){
+    const st = cur.steps[i];
+    if(!st.showIf || st.showIf(cur.sel)){ cur.idx=i; return renderStep(st); }
+    i += dir;
+  }
+  if(i>=cur.steps.length) return finishItem();
+  return screenCats(); // avant la 1re étape
+}
+
+/* ---------- Rendu d'une étape ---------- */
+function renderStep(st){
+  wizBack.hidden=false;
+  wizBack.onclick=()=>goStep(-1);
+  const stepNo = cur.steps.filter((s,k)=>k<=cur.idx && (!s.showIf||s.showIf(cur.sel))).length;
+  setHead(cur.cat.emoji+' '+cur.cat.label, 'Étape '+stepNo);
+
+  // titre dynamique viandes
+  let title = st.title;
+  if(st.meatFrom){ const n=(cur.sel[st.meatFrom]||{}).meat||0; title='Choisis tes '+n+' viande'+(n>1?'s':''); }
+
+  let html = `<div style="font-family:'Anton';font-size:22px;text-transform:uppercase;color:#0d0d0d">${esc(title)}</div>`;
+  if(st.sub) html += `<div style="font-size:13px;font-weight:800;color:#6b6b6b;margin-top:-4px">${esc(st.sub)}</div>`;
+
+  if(st.type==='single'){
+    html += st.opts.map((o,k)=>
+      `<button class="opt-btn" data-k="${k}"><span class="op-name">${esc(o.label)}${o.note?`<small>${esc(o.note)}</small>`:''}</span>${o.price?`<span class="op-price">${fmtEuro(o.price)}</span>`:''}</button>`).join('');
+    wizBody.innerHTML = html;
+    wizBody.querySelectorAll('.opt-btn').forEach(b=>b.onclick=()=>{ cur.sel[st.id]=st.opts[+b.dataset.k]; goStep(1); });
+    wizFoot.innerHTML='';
+  } else { // multi
+    const chosen = cur.sel[st.id] || [];
+    const exact = st.meatFrom ? ((cur.sel[st.meatFrom]||{}).meat||0) : null;
+    html += '<div class="chips">'+st.opts.map((o,k)=>{
+      const on = chosen.some(c=>c.label===o.label);
+      return `<span class="chip ${on?'on':''}" data-k="${k}">${esc(o.label)}${o.price?` +${fmtEuro(o.price)}`:''}</span>`;
+    }).join('')+'</div>';
+    wizBody.innerHTML = html;
+
+    const refresh = ()=>{
+      const cho = cur.sel[st.id]||[];
+      const max = exact!=null ? exact : st.max;
+      wizBody.querySelectorAll('.chip').forEach(ch=>{
+        const o = st.opts[+ch.dataset.k];
+        const on = cho.some(c=>c.label===o.label);
+        ch.classList.toggle('on',on);
+        const full = max!=null && cho.length>=max && !on;
+        ch.classList.toggle('dis',full);
+      });
+      let ok=true, hint='';
+      if(exact!=null){ ok = cho.length===exact; hint = cho.length+'/'+exact+' viande'+(exact>1?'s':''); }
+      else if(st.max){ hint = cho.length+'/'+st.max; ok = st.optional? true : cho.length>=1; }
+      else { ok = st.optional? true : cho.length>=1; }
+      nextBtn.disabled = !ok;
+      hintEl.textContent = hint;
+    };
+
+    wizBody.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{
+      const o = st.opts[+ch.dataset.k];
+      let cho = cur.sel[st.id] || [];
+      const idx = cho.findIndex(c=>c.label===o.label);
+      const max = exact!=null ? exact : st.max;
+      if(idx>=0) cho.splice(idx,1);
+      else { if(max!=null && cho.length>=max) return; cho.push(o); }
+      cur.sel[st.id]=cho;
+      refresh();
+    });
+
+    wizFoot.innerHTML = `<div class="wiz-hint" id="wizHint"></div><button class="wiz-next" id="wizNext">Continuer →</button>`;
+    var nextBtn=document.getElementById('wizNext'), hintEl=document.getElementById('wizHint');
+    nextBtn.onclick=()=>goStep(1);
+    refresh();
+  }
+}
+
+/* ---------- Finaliser l'article ---------- */
+function computeItem(){
+  let price=0, base='', details=[];
+  cur.steps.forEach(st=>{
+    const v=cur.sel[st.id];
+    if(v==null) return;
+    if(st.type==='single'){
+      price += v.price||0;
+      if(st.base){ base = v.label + (v.note? ' ('+v.note+')':''); }
+      else if(st.id==='formule' && !(v.price>0)){ /* seul → rien */ }
+      else if((/^(non|sans)/i).test(v.label) && st.id!=='gratin'){ /* option refusée → rien */ }
+      else details.push(st.key+' : '+v.label);
+    } else {
+      if(v.length){ price += v.reduce((s,o)=>s+(o.price||0),0); details.push(st.key+' : '+v.map(o=>o.label).join(', ')); }
+    }
+  });
+  return { title: cur.cat.emoji+' '+cur.cat.label+(base? ' — '+base:''), price, details };
+}
+function finishItem(){ cart.push(computeItem()); screenCart(); }
+
+/* ---------- Écran : panier ---------- */
+function screenCart(){
+  cur=null;
+  wizBack.hidden=false;
+  wizBack.onclick=screenCats;
+  setHead('Ma commande', cart.length+' article'+(cart.length>1?'s':''));
+  if(!cart.length){
+    wizBody.innerHTML='<div class="cart-empty">Ton panier est vide.</div>';
+    wizFoot.innerHTML='<button class="wiz-next" id="addMore">+ Ajouter un article</button>';
+    document.getElementById('addMore').onclick=screenCats; return;
+  }
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  wizBody.innerHTML = cart.map((it,k)=>`
+    <div class="cart-item">
+      <div class="ci-top"><div class="ci-name">${esc(it.title)}</div><div class="ci-price">${fmtEuro(it.price)}</div></div>
+      ${it.details.length?`<div class="ci-det">${it.details.map(esc).join('<br>')}</div>`:''}
+      <button class="ci-rm" data-k="${k}">✕ Retirer</button>
+    </div>`).join('') + `<div class="cart-total"><span>Total</span><span class="ct-val">${fmtEuro(total)}</span></div>`;
+  wizBody.querySelectorAll('.ci-rm').forEach(b=>b.onclick=()=>{ cart.splice(+b.dataset.k,1); screenCart(); });
+  wizFoot.innerHTML = `<button class="wiz-second" id="addMore">+ Ajouter un article</button>
+    <button class="wiz-next" id="toContact">Valider ma commande →</button>`;
+  document.getElementById('addMore').onclick=screenCats;
+  document.getElementById('toContact').onclick=screenContact;
+}
+
+/* ---------- Écran : coordonnées + envoi ---------- */
+function screenContact(){
+  wizBack.hidden=false;
+  wizBack.onclick=screenCart;
+  setHead('Mes coordonnées','Dernière étape');
+  wizBody.innerHTML = `
+    <div class="field"><label>Nom et prénom</label><input id="c-nom" type="text" placeholder="Ex : Jean Dupont"></div>
+    <div class="field"><label>Téléphone</label><input id="c-tel" type="tel" placeholder="Ex : 06 12 34 56 78"></div>
+    <div class="field"><label>Mode</label>
+      <div class="mode-toggle" id="c-mode">
+        <label class="active"><input type="radio" name="cmode" value="À emporter" checked>🥡 À emporter</label>
+        <label><input type="radio" name="cmode" value="Livraison">🛵 Livraison</label>
+      </div>
+    </div>
+    <div class="field" id="c-addr-field" hidden><label>Adresse de livraison</label><input id="c-addr" type="text" placeholder="Adresse sur le plateau de Maîche"></div>
+    <div class="field"><label>Remarque (option)</label><textarea id="c-note" placeholder="Allergies, précisions, heure souhaitée…"></textarea></div>
+    <div class="form-status" id="c-status"></div>`;
+  const modeWrap=document.getElementById('c-mode');
+  const addrField=document.getElementById('c-addr-field');
+  modeWrap.querySelectorAll('label').forEach(l=>l.onclick=()=>{
+    modeWrap.querySelectorAll('label').forEach(x=>x.classList.remove('active'));
+    l.classList.add('active');
+    addrField.hidden = l.querySelector('input').value!=='Livraison';
+  });
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  wizFoot.innerHTML = `<button class="wiz-next" id="sendOrder">🛒 Envoyer ma commande — ${fmtEuro(total)}</button>
+    <p class="call-instead">Ou appelle direct : <a href="tel:0953086288">09 53 08 62 88</a></p>`;
+  document.getElementById('sendOrder').onclick=sendOrder;
+}
+
+async function sendOrder(){
+  const nom=document.getElementById('c-nom').value.trim();
+  const tel=document.getElementById('c-tel').value.trim();
+  const mode=document.querySelector('input[name="cmode"]:checked').value;
+  const addr=(document.getElementById('c-addr')||{}).value||'';
+  const note=document.getElementById('c-note').value.trim();
+  const st=document.getElementById('c-status');
+  st.className='form-status';
+  if(!nom||!tel){ st.className='form-status err'; st.textContent='⚠️ Indique ton nom et ton téléphone.'; return; }
+  if(mode==='Livraison' && !addr.trim()){ st.className='form-status err'; st.textContent='⚠️ Indique ton adresse de livraison.'; return; }
+  if(FORMSPREE.includes('VOTRE_ID')){ st.className='form-status err'; st.textContent='⚠️ Formulaire non configuré : remplacez VOTRE_ID par votre identifiant Formspree dans le code.'; return; }
+
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  const cmdText = cart.map((it,k)=>`${k+1}. ${it.title} — ${fmtEuro(it.price)}`+(it.details.length?`\n   ${it.details.join(' | ')}`:'')).join('\n')
+                + `\n\nTOTAL : ${fmtEuro(total)}`;
+
+  const fd=new FormData();
+  fd.append('_subject','Nouvelle commande — Le Burger Maîche');
+  fd.append('Nom',nom); fd.append('Téléphone',tel); fd.append('Mode',mode);
+  if(mode==='Livraison') fd.append('Adresse',addr);
+  if(note) fd.append('Remarque',note);
+  fd.append('Commande',cmdText); fd.append('Total',fmtEuro(total));
+
+  const btn=document.getElementById('sendOrder'); btn.disabled=true; btn.textContent='Envoi…';
+  try{
+    const res=await fetch(FORMSPREE,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    if(res.ok){
+      cart=[];
+      setHead('Merci !','Commande envoyée');
+      wizBack.hidden=true;
+      wizBody.innerHTML='<div style="text-align:center;padding:14px 0"><div style="font-size:48px">✅</div><div style="font-family:\'Anton\';font-size:26px;text-transform:uppercase;margin-top:6px">Commande envoyée !</div><p style="color:#6b6b6b;font-weight:600;margin-top:8px">On te rappelle vite au numéro indiqué pour confirmer.</p></div>';
+      wizFoot.innerHTML='<button class="wiz-next" id="okClose">Fermer</button>';
+      document.getElementById('okClose').onclick=closeModal;
+    }else throw new Error('server');
+  }catch(e){
+    st.className='form-status err'; st.innerHTML="❌ L'envoi a échoué. Appelle-nous au <a href='tel:0953086288'>09 53 08 62 88</a>.";
+    btn.disabled=false; btn.textContent='🛒 Envoyer ma commande — '+fmtEuro(total);
+  }
+}
+
+/* =================== OUVERTURE MODALE =================== */
+function openModal(){ modal.hidden=false; document.body.style.overflow='hidden'; navLinks.classList.remove('show'); floatOrder.style.display='none'; cart.length? screenCart() : screenCats(); }
+function closeModal(){ modal.hidden=true; document.body.style.overflow=''; floatOrder.style.display=''; }
+document.querySelectorAll('.js-open-order').forEach(b=>b.addEventListener('click',openModal));
+document.getElementById('closeOrder').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!modal.hidden) closeModal(); });
+
+/* =================== NAV + VUES =================== */
+document.getElementById('burgerBtn').addEventListener('click',()=>navLinks.classList.toggle('show'));
+const homeView=document.getElementById('homeView'), carteView=document.getElementById('carteView');
+function showCarte(){homeView.hidden=true;carteView.hidden=false;navLinks.classList.remove('show');window.scrollTo({top:0});}
+function showHome(t){carteView.hidden=true;homeView.hidden=false;navLinks.classList.remove('show');if(t){const el=document.getElementById(t);if(el){el.scrollIntoView({behavior:'smooth'});return;}}window.scrollTo({top:0});}
+document.querySelectorAll('.js-carte').forEach(b=>b.addEventListener('click',showCarte));
+document.querySelectorAll('.js-home').forEach(b=>b.addEventListener('click',()=>showHome()));
+document.getElementById('brandLink').addEventListener('click',()=>showHome());
+document.querySelectorAll('.js-home-link').forEach(a=>a.addEventListener('click',()=>showHome(a.dataset.target)));
+
+/* =================== HORAIRES =================== */
+document.getElementById('year').textContent=new Date().getFullYear();
+const HOURS={0:{label:'Dimanche',ranges:[[660,1350]]},1:{label:'Lundi',ranges:[],closed:true},2:{label:'Mardi',ranges:[[660,900],[1020,1350]]},3:{label:'Mercredi',ranges:[[660,870],[1020,1350]]},4:{label:'Jeudi',ranges:[[660,900],[1020,1350]]},5:{label:'Vendredi',ranges:[[660,900],[1020,1380]]},6:{label:'Samedi',ranges:[[660,900],[1050,1380]]}};
+const dorder=[6,0,1,2,3,4,5];
+const fmt=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const rangesText=d=>d.closed?'<span class="closed">Fermé</span>':d.ranges.map(r=>fmt(r[0])+'–'+fmt(r[1])).join(' · ');
+const now=new Date(),todayIdx=now.getDay(),mins=now.getHours()*60+now.getMinutes();
+document.getElementById('hoursList').innerHTML=dorder.map(i=>{const d=HOURS[i],t=i===todayIdx;return '<div class="hours-row '+(t?'today':'')+'"><span class="day">'+d.label+(t?'<span class="today-badge">AUJ.</span>':'')+'</span><span class="times">'+rangesText(d)+'</span></div>';}).join('');
+const today=HOURS[todayIdx];
+const isOpen=!today.closed&&today.ranges.some(r=>mins>=r[0]&&mins<r[1]);
+const pill=document.getElementById('statusPill'),txt=document.getElementById('statusText');
+if(isOpen){const c=today.ranges.find(r=>mins>=r[0]&&mins<r[1]);pill.classList.add('open');txt.textContent='Ouvert maintenant · jusqu\u2019à '+fmt(c[1]);}
+else{pill.classList.add('closed');let next=null;for(let s=0;s<=7&&!next;s++){const d=HOURS[(todayIdx+s)%7];if(d.closed)continue;for(const r of d.ranges){if(s===0&&mins>=r[0])continue;next={day:s===0?"aujourd'hui":(s===1?'demain':d.label.toLowerCase()),time:fmt(r[0])};break;}}txt.textContent=next?('Fermé · ouvre '+next.day+' à '+next.time):'Fermé actuellement';}
+</script>
+</body>
+</html>
