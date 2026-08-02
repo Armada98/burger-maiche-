@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Burger Maîche — Burgers maison, Kebabs & Tacos · Livraison offerte</title>
+<meta name="description" content="Le Burger Maîche : burgers maison, kebabs, tacos, pizzas et spécialités. 14 rue Montalembert, 25120 Maîche. Livraison offerte sur le plateau de Maîche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@latest" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" id="brandLink">Le <b>Burger</b> <i>Maîche</i></a>
+    <nav class="nav-links" id="navLinks">
+      <a class="js-carte">La carte</a>
+      <a class="js-home-link" data-target="specialites">Spécialités</a>
+      <a class="js-home-link" data-target="avis">Avis</a>
+      <a class="js-home-link" data-target="contact">Contact</a>
+      <a href="tel:0953086288" class="nav-call"><i data-lucide="phone"></i> 09 53 08 62 88</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-order js-open-order"><i data-lucide="shopping-cart"></i><span class="txt">Commander</span><span class="cart-count" hidden>0</span></button>
+      <button class="burger-btn" id="burgerBtn" aria-label="Menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ACCUEIL ============ -->
+<div id="homeView">
+
+  <!-- HERO -->
+  <section class="hero on-dark" id="top">
+    <div class="hero-glow g1"></div>
+    <div class="hero-glow g2"></div>
+    <div class="smoke s1"></div><div class="smoke s2"></div><div class="smoke s3"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy reveal">
+        <span class="kicker">Restaurant · Maîche</span>
+        <h1>Le Burger <span class="gold">Maîche</span></h1>
+        <p class="sub">Burgers maison, kebabs et spécialités préparés minute avec des produits frais. À emporter ou livrés chez vous, partout sur le plateau de Maîche.</p>
+        <div class="hero-cta">
+          <button class="btn btn-gold js-open-order"><i data-lucide="shopping-cart"></i> Commander en ligne</button>
+          <button class="btn btn-outline js-carte"><i data-lucide="utensils"></i> Voir la carte</button>
+          <a class="btn btn-red" href="tel:0953086288"><i data-lucide="phone"></i> Appeler</a>
+        </div>
+        <div class="hero-meta">
+          <span class="status" id="statusPill"><span class="dot"></span><span id="statusText">Vérification des horaires…</span></span>
+          <span class="delivery-chip"><i data-lucide="bike"></i> Livraison offerte sur Maîche</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal d1">
+        <div class="burger-plate"></div>
+        <!-- Burger illustré -->
+        <svg class="burger-art" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="bunTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b45a"/><stop offset="1" stop-color="#dd8f2f"/></linearGradient>
+            <linearGradient id="bunBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8a544"/><stop offset="1" stop-color="#c67e26"/></linearGradient>
+            <linearGradient id="patty" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6e4127"/><stop offset="1" stop-color="#3f2413"/></linearGradient>
+            <linearGradient id="cheese" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd54a"/><stop offset="1" stop-color="#f2ac1e"/></linearGradient>
+            <linearGradient id="lettuce" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ecb52"/><stop offset="1" stop-color="#5fa233"/></linearGradient>
+          </defs>
+          <!-- bun bottom -->
+          <path d="M42 150 q78 22 156 0 l0 -14 q-78 20 -156 0 z" fill="url(#bunBot)"/>
+          <!-- patty -->
+          <path d="M38 132 q82 20 164 0 l0 -12 q-82 20 -164 0 z" fill="url(#patty)"/>
+          <ellipse cx="120" cy="120" rx="82" ry="9" fill="#54311c"/>
+          <!-- cheese with drips -->
+          <path d="M40 116 l160 0 -16 20 -18 -12 -20 15 -20 -12 -20 15 -20 -12 -18 12 -8 -9 z" fill="url(#cheese)"/>
+          <!-- tomato -->
+          <path d="M44 110 q76 16 152 0 l0 -6 q-76 16 -152 0 z" fill="#d94236"/>
+          <!-- lettuce -->
+          <path d="M38 104 q9 11 20 3 q11 11 22 2 q11 11 22 2 q11 11 22 2 q11 11 22 2 q10 7 18 -3 l0 -8 q-84 16 -168 0 z" fill="url(#lettuce)"/>
+          <!-- bun top -->
+          <path d="M40 100 C40 44 200 44 200 100 Z" fill="url(#bunTop)"/>
+          <ellipse cx="96" cy="70" rx="34" ry="13" fill="#ffffff" opacity=".16"/>
+          <!-- sesame -->
+          <g fill="#fbe9c4">
+            <ellipse cx="86" cy="86" rx="4.6" ry="2.4" transform="rotate(-18 86 86)"/>
+            <ellipse cx="112" cy="80" rx="4.6" ry="2.4" transform="rotate(8 112 80)"/>
+            <ellipse cx="138" cy="84" rx="4.6" ry="2.4" transform="rotate(22 138 84)"/>
+            <ellipse cx="100" cy="70" rx="4.4" ry="2.3" transform="rotate(-8 100 70)"/>
+            <ellipse cx="126" cy="70" rx="4.4" ry="2.3" transform="rotate(14 126 70)"/>
+            <ellipse cx="150" cy="94" rx="4.4" ry="2.3" transform="rotate(30 150 94)"/>
+            <ellipse cx="74" cy="94" rx="4.4" ry="2.3" transform="rotate(-28 74 94)"/>
+          </g>
+        </svg>
+        <!-- Ingrédients flottants -->
+        <svg class="floatie f1" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#d94236"/><circle cx="20" cy="20" r="13" fill="#ef6d60"/><g fill="#ffd7cf"><ellipse cx="20" cy="12" rx="2" ry="4"/><ellipse cx="27" cy="18" rx="2" ry="4" transform="rotate(60 27 18)"/><ellipse cx="24" cy="27" rx="2" ry="4" transform="rotate(120 24 27)"/><ellipse cx="16" cy="27" rx="2" ry="4" transform="rotate(-120 16 27)"/><ellipse cx="13" cy="18" rx="2" ry="4" transform="rotate(-60 13 18)"/></g></svg>
+        <svg class="floatie f2" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 32 L36 32 L20 8 Z" fill="#ffd54a" stroke="#e8a91e" stroke-width="1.5" stroke-linejoin="round"/><circle cx="20" cy="24" r="2.6" fill="#e8a91e"/><circle cx="14" cy="28" r="1.8" fill="#e8a91e"/><circle cx="26" cy="27" r="2" fill="#e8a91e"/></svg>
+        <svg class="floatie f3" viewBox="0 0 44 30" aria-hidden="true"><path d="M2 20 q6 -12 14 -6 q6 -12 14 -4 q7 -9 12 1 q-2 12 -14 12 q-16 6 -26 2 z" fill="#6fb63f"/><path d="M8 16 q8 -6 16 -2" stroke="#4e8a2a" stroke-width="1.4" fill="none"/></svg>
+        <svg class="floatie f4" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#e6b95f"/><circle cx="20" cy="20" r="9" fill="#141210"/><circle cx="20" cy="20" r="17" fill="none" stroke="#c9942f" stroke-width="2"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features on-dark" style="padding:0">
+    <div class="wrap">
+      <div class="feature reveal"><div class="fi"><i data-lucide="utensils"></i></div><div><h4>Fait maison</h4><p>Préparé minute, produits frais</p></div></div>
+      <div class="feature reveal d1"><div class="fi"><i data-lucide="bike"></i></div><div><h4>Livraison offerte</h4><p>Sur tout le plateau de Maîche</p></div></div>
+      <div class="feature reveal d2"><div class="fi"><i data-lucide="clock"></i></div><div><h4>Ouvert 6j/7</h4><p>Fermé le lundi uniquement</p></div></div>
+      <div class="feature reveal d3"><div class="fi"><i data-lucide="smartphone"></i></div><div><h4>Commande en ligne</h4><p>Composez votre plat en 1 min</p></div></div>
+    </div>
+  </section>
+
+  <!-- SPÉCIALITÉS -->
+  <section class="sec-cream" id="specialites">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Nos incontournables</span>
+        <h2>Les spécialités de la maison</h2>
+        <p>Une sélection de nos plats les plus commandés, généreux et préparés sur place.</p>
+      </div>
+      <div class="sig-grid">
+        <article class="sig-card reveal">
+          <div class="sig-emblem">🍔<span class="badge">Signature</span></div>
+          <div class="sig-body">
+            <h3>Le Burger spécial</h3>
+            <p>Steak maison, onion rings croustillants et sauce spéciale de la maison.</p>
+            <div class="sig-foot"><span class="sig-price">17 €</span><button class="btn btn-gold js-open-order"><i data-lucide="plus"></i> Commander</button></div>
+          </div>
+        </article>
+        <article class="sig-card reveal d1">
+          <div class="sig-emblem">🌯<span class="badge">Best-seller</span></div>
+          <div class="sig-body">
+            <h3>Tacos XXL — 4 viandes</h3>
+            <p>Quatre viandes au choix, sauces et gratinage cheddar / raclette offert.</p>
+            <div class="sig-foot"><span class="sig-price">15 €</span><button class="btn btn-gold js-open-order"><i data-lucide="plus"></i> Commander</button></div>
+          </div>
+        </article>
+        <article class="sig-card reveal d2">
+          <div class="sig-emblem">🍽️<span class="badge">Généreux</span></div>
+          <div class="sig-body">
+            <h3>Assiette mix kebab-köfte</h3>
+            <p>Kebab et köfte, servis avec salade, frites maison et bulgur parfumé.</p>
+            <div class="sig-foot"><span class="sig-price">15 €</span><button class="btn btn-gold js-open-order"><i data-lucide="plus"></i> Commander</button></div>
+          </div>
+        </article>
+      </div>
+      <div class="center-cta reveal"><button class="btn btn-dark js-carte"><i data-lucide="book-open"></i> Voir toute la carte</button></div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="sec-dark on-dark" id="avis">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Ils nous ont goûtés</span>
+        <h2>Ce que disent nos clients</h2>
+        <p>La satisfaction de nos clients, c'est notre meilleure recette.</p>
+      </div>
+      <!-- Avis d'exemple : à remplacer par vos vrais avis Google -->
+      <div class="reviews-grid">
+        <div class="review reveal">
+          <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p>« Les meilleurs tacos du coin, sans exagérer. Viande généreuse, sauce maison au top et service rapide. Je recommande à 100 %. »</p>
+          <div class="reviewer"><div class="av">M</div><div><div class="rn">Maxime R.</div><div class="rd">Client régulier</div></div></div>
+        </div>
+        <div class="review reveal d1">
+          <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p>« Burger fait maison excellent et livraison offerte à Maîche, que demander de plus ? Portions généreuses et produits vraiment frais. »</p>
+          <div class="reviewer"><div class="av">S</div><div><div class="rn">Sophie L.</div><div class="rd">Livraison</div></div></div>
+        </div>
+        <div class="review reveal d2">
+          <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p>« Accueil chaleureux, assiettes copieuses et un vrai bon rapport qualité-prix. Devenu mon adresse préférée pour le vendredi soir. »</p>
+          <div class="reviewer"><div class="av">K</div><div><div class="rn">Karim B.</div><div class="rd">Sur place</div></div></div>
+        </div>
+      </div>
+      <div class="reviews-agg reveal"><b>4,8/5</b><span class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span><span>d'après les avis de nos clients</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / HORAIRES -->
+  <section class="sec-cream" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Infos pratiques</span>
+        <h2>Horaires & contact</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <h3><i data-lucide="clock"></i> Horaires d'ouverture</h3>
+          <div id="hoursList"></div>
+        </div>
+        <div class="info-card reveal d1">
+          <h3><i data-lucide="map-pin"></i> Nous trouver</h3>
+          <div class="contact-line"><div class="ico"><i data-lucide="map-pin"></i></div><div><div class="lbl">Adresse</div><div class="val">14 rue Montalembert<br>25120 Maîche</div></div></div>
+          <div class="contact-line"><div class="ico"><i data-lucide="phone"></i></div><div><div class="lbl">Téléphone</div><div class="val"><a href="tel:0953086288">09 53 08 62 88</a><br><a href="tel:0769158599">07 69 15 85 99</a></div></div></div>
+          <div class="contact-line"><div class="ico"><i data-lucide="bike"></i></div><div><div class="lbl">Livraison</div><div class="val">Offerte sur le plateau de Maîche</div></div></div>
+          <a class="btn btn-dark map-btn" href="https://www.google.com/maps/search/?api=1&query=Le+Burger+Maiche+14+rue+Montalembert+25120+Maiche" target="_blank" rel="noopener"><i data-lucide="map"></i> Ouvrir dans Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CARTE ============ -->
+<div id="carteView" hidden>
+  <section class="sec-cream" id="carte">
+    <div class="wrap">
+      <div class="carte-top">
+        <button class="btn btn-outline-dark js-home"><i data-lucide="arrow-left"></i> Accueil</button>
+        <button class="btn btn-red js-open-order"><i data-lucide="shopping-cart"></i> Commander</button>
+      </div>
+      <div class="sec-head">
+        <span class="kicker">Notre carte</span>
+        <h2>Tout ce qu'on fait maison</h2>
+      </div>
+      <div class="menu-grid">
+        <div class="formule reveal">
+          <div class="big">Menu <span>+3 €</span> — frites + boisson</div>
+          <p>Ajoutez frites + boisson à n'importe quel plat pour seulement 3 € de plus.</p>
+        </div>
+
+        <div class="card reveal"><div class="card-head"><span class="ci-emb">🍔</span><h3>Burgers</h3></div><div class="card-body">
+          <div class="item"><span class="name">Burger 180g</span><span class="lead"></span><span class="price">12 €</span></div>
+          <div class="item"><span class="name">Burger maxi 360g</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Chicken</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Big chicken</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Le Burger spécial <small>onion rings, sauce spéciale</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="item"><span class="name">Le Burger mix <small>poulet et steak de bœuf</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="subline">Suppléments</div>
+          <div class="item"><span class="name">Supplément fromage</span><span class="lead"></span><span class="price">1 €</span></div>
+          <div class="item"><span class="name">Supplément œuf</span><span class="lead"></span><span class="price">1,5 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1"><div class="card-head"><span class="ci-emb">🌯</span><h3>Tacos</h3></div><div class="card-body">
+          <p class="note">Viandes : steak, poulet, kebab, köfte, merguez, cordon bleu, tenders, nuggets, falafel.</p>
+          <div class="item"><span class="name">Tacos M — 1 viande</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Tacos L — 2 viandes</span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Tacos XL — 3 viandes</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Tacos XXL — 4 viandes</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Gratiné <small>cheddar, raclette, mozzarella</small></span><span class="lead"></span><span class="price free">OFFERT</span></div>
+        </div></div>
+
+        <div class="card reveal d2"><div class="card-head"><span class="ci-emb">🥙</span><h3>Sandwichs</h3></div><div class="card-body">
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Köfte</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Américain</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Cordon bleu <small>avec fromage</small></span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Falafel</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Toast</span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+
+        <div class="card reveal"><div class="card-head"><span class="ci-emb">🌯</span><h3>Dürüms <span class="tag">Galettes</span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Dürüm kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Maxi kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Dürüm poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm steak</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Supplément viande</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1"><div class="card-head"><span class="ci-emb">🍽️</span><h3>Assiettes</h3></div><div class="card-body">
+          <p class="note">Servies avec salade + frites + bulgur.</p>
+          <div class="item"><span class="name">Assiette kebab</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Assiette köfte</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette falafel</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette steak</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette merguez</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette mix <small>kebab + köfte</small></span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Assiette adana</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette pilons de poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette mix spécial 3 viandes</span><span class="lead"></span><span class="price">19 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2"><div class="card-head"><span class="ci-emb">📦</span><h3>Box</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tacos box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Box poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Box falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Bucket <small>frites, tenders, nuggets, onion rings, mozza sticks</small></span><span class="lead"></span><span class="price">12 €</span></div>
+        </div></div>
+
+        <div class="card reveal"><div class="card-head"><span class="ci-emb">🍕</span><h3>Pizzas</h3></div><div class="card-body">
+          <div class="item"><span class="name">Margharita</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">4 saisons</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Sucuk <small>saucisse turque</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">1 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1"><div class="card-head"><span class="ci-emb">🫓</span><h3>Pides</h3></div><div class="card-body">
+          <div class="item"><span class="name">Pide fromage</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Pide viande hachée</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Pide épinards</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>viande et fromage</small></span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2"><div class="card-head"><span class="ci-emb">🌾</span><h3>Lahmacun</h3></div><div class="card-body">
+          <div class="item"><span class="name">Seul</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>poulet et kebab</small></span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+
+        <div class="card reveal"><div class="card-head"><span class="ci-emb">🥖</span><h3>Paninis</h3></div><div class="card-body">
+          <div class="item"><span class="name">Panini kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini 4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini steak 180g</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini mix</span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1"><div class="card-head"><span class="ci-emb">🍟</span><h3>Barquettes</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tenders <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Nuggets <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Mozza sticks <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Onion rings <small>5 unités</small></span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Falafel <small>5 unités</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="subline">Frites</div>
+          <div class="item"><span class="name">Petite</span><span class="lead"></span><span class="price">2,50 €</span></div>
+          <div class="item"><span class="name">Moyenne</span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Grande</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Frites avec cheddar</span><span class="lead"></span><span class="price">3,50 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2"><div class="card-head"><span class="ci-emb">🥗</span><h3>Salades / Mezzés</h3></div><div class="card-body">
+          <div class="item"><span class="name">César</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Coban <small>salade du berger</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Salade composée de poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Salade de saison</span><span class="lead"></span><span class="price">7 €</span></div>
+        </div></div>
+
+        <div class="card reveal"><div class="card-head"><span class="ci-emb">🍚</span><h3>Collations <span class="tag">Riz</span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Pois chiches</span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1"><div class="card-head"><span class="ci-emb">🎯</span><h3>Menus</h3></div><div class="card-body">
+          <div class="item"><span class="name">Étudiant 1 <small>kebab + frites + boisson</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Étudiant 2 <small>tacos M + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Étudiant 3 <small>burger 100g + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Enfant <small>1 viande + frites + boisson + jouet</small></span><span class="lead"></span><span class="price">9 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2"><div class="card-head"><span class="ci-emb">🍰</span><h3>Desserts</h3></div><div class="card-body">
+          <div class="item"><span class="name">Baklava <small>3 pièces</small></span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Tiramisu</span><span class="lead"></span><span class="price">4 €</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="flogo">Le <b>Burger</b> <i>Maîche</i></div>
+    <p class="ftag">14 rue Montalembert · 25120 Maîche · Livraison offerte sur le plateau de Maîche</p>
+    <div class="fcall">
+      <a href="tel:0953086288"><i data-lucide="phone"></i> 09 53 08 62 88</a>
+      <a href="tel:0769158599"><i data-lucide="phone"></i> 07 69 15 85 99</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> Le Burger Maîche — Tous droits réservés.</div>
+  </div>
+</footer>
+
+<!-- BOUTON FLOTTANT -->
+<button class="float-order js-open-order" id="floatOrder"><i data-lucide="shopping-cart"></i><span class="txt">Commander</span><span class="cart-count" hidden>0</span></button>
+
+<!-- MODALE / CONFIGURATEUR -->
+<div class="modal-overlay" id="orderModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="wiz-head">
+      <button class="wiz-back" id="wizBack" hidden aria-label="Retour"><i data-lucide="arrow-left"></i></button>
+      <div class="wiz-titles">
+        <div class="wiz-title" id="wizTitle">Je commande</div>
+        <div class="wiz-sub" id="wizSub">Choisissez une catégorie</div>
+      </div>
+      <button class="modal-close" id="closeOrder" aria-label="Fermer"><i data-lucide="x"></i></button>
+    </div>
+    <div class="wiz-body" id="wizBody"></div>
+    <div class="wiz-foot" id="wizFoot"></div>
+  </div>
+</div>
+
+</body>
+</html>
