@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Burger Maîche — Tacos, Kebab, Panini, Pizza, Sandwich</title>
+<meta name="description" content="Le Burger Maîche : burgers, tacos, kebabs, pizzas et paninis préparés minute. 14 rue Montalembert, 25120 Maîche. Commande en ligne, livraison offerte sur Maîche.">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:title" content="Le Burger Maîche — Tacos · Kebab · Panini · Pizza · Sandwich">
+<meta property="og:description" content="Commandez en ligne. Livraison offerte sur Maîche dès 15 €.">
+<meta property="og:image" content="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@latest" defer></script>
+<script src="media.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" id="brandLink" aria-label="Le Burger Maîche — accueil"><img src="logo.png" alt="Le Burger Maîche"></a>
+    <nav class="nav-links" id="navLinks">
+      <a class="js-carte">La carte</a>
+      <a class="js-home-link" data-target="best">Best-sellers</a>
+      <a class="js-home-link" data-target="avis">Avis</a>
+      <a class="js-home-link" data-target="contact">Contact</a>
+      <a href="tel:0953086288" class="nav-call"><i data-lucide="phone"></i> 09 53 08 62 88</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-order js-open-order"><i data-lucide="shopping-cart"></i><span class="txt">Commander</span><span class="cart-count" hidden>0</span></button>
+      <button class="burger-btn" id="burgerBtn" aria-label="Menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== ACCUEIL ===================== -->
+<div id="homeView">
+
+  <!-- HERO : séquence vidéo cinématique -->
+  <section class="hero" id="top">
+    <div class="hero-stage" id="heroStage"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-grain"></div>
+    <div class="wipe" id="heroWipe"><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <span class="kicker anim-in" id="hKicker">En cuisine</span>
+        <h1 class="anim-in" id="hTitle">Le tacos<br><span>monté sous vos yeux</span></h1>
+        <p class="sub anim-in" id="hSub">Viandes grillées minute, sauces maison, gratinage offert.</p>
+        <div class="hero-cta">
+          <button class="btn btn-y js-open-order"><i data-lucide="shopping-cart"></i> Commander</button>
+          <button class="btn btn-ghost js-carte"><i data-lucide="utensils"></i> La carte</button>
+          <a class="btn btn-r" href="tel:0953086288"><i data-lucide="phone"></i> Appeler</a>
+        </div>
+        <div class="hero-meta">
+          <span class="status" id="statusPill"><span class="dot"></span><span id="statusText">Vérification des horaires…</span></span>
+          <span class="chip-free"><i data-lucide="bike"></i> Livraison offerte sur Maîche</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
+
+  <!-- BANDEAU DÉFILANT -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Tacos</span><span>Kebab</span><span>Panini</span><span>Pizza</span><span>Sandwich</span><span>Burgers maison</span><span>Livraison offerte</span>
+      <span>Tacos</span><span>Kebab</span><span>Panini</span><span>Pizza</span><span>Sandwich</span><span>Burgers maison</span><span>Livraison offerte</span>
+    </div>
+  </div>
+
+  <!-- BEST-SELLERS -->
+  <section class="sec-light dark-txt" id="best">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Nos incontournables</span>
+        <h2>Les plus commandés</h2>
+        <p>Les quatre plats qui partent le plus vite. Préparés à la commande, jamais à l'avance.</p>
+      </div>
+      <div class="stars-grid">
+        <article class="star-card reveal">
+          <div class="star-img"><span class="star-badge">Best-seller</span><img data-star="tacos" src="" alt="Tacos XXL 4 viandes" loading="lazy"></div>
+          <div class="star-body">
+            <h3>Tacos XXL</h3>
+            <p>4 viandes au choix, sauces et gratinage cheddar ou raclette offert.</p>
+            <div class="star-foot"><span class="star-price">15 €</span><button class="star-add js-open-order"><i data-lucide="plus"></i> Ajouter</button></div>
+          </div>
+        </article>
+        <article class="star-card reveal d1">
+          <div class="star-img"><span class="star-badge">Signature</span><img data-star="burger" src="" alt="Le Burger spécial" loading="lazy"></div>
+          <div class="star-body">
+            <h3>Le Burger spécial</h3>
+            <p>Steak maison 180 g, onion rings croustillants, sauce spéciale.</p>
+            <div class="star-foot"><span class="star-price">17 €</span><button class="star-add js-open-order"><i data-lucide="plus"></i> Ajouter</button></div>
+          </div>
+        </article>
+        <article class="star-card reveal d2">
+          <div class="star-img"><span class="star-badge">Généreux</span><img data-star="assiette" src="" alt="Assiette mix kebab köfte" loading="lazy"></div>
+          <div class="star-body">
+            <h3>Assiette mix</h3>
+            <p>Kebab et köfte, salade, frites maison et bulgur parfumé.</p>
+            <div class="star-foot"><span class="star-price">15 €</span><button class="star-add js-open-order"><i data-lucide="plus"></i> Ajouter</button></div>
+          </div>
+        </article>
+        <article class="star-card reveal d3">
+          <div class="star-img"><span class="star-badge">Classique</span><img data-star="kebab" src="" alt="Dürüm kebab" loading="lazy"></div>
+          <div class="star-body">
+            <h3>Dürüm kebab</h3>
+            <p>Galette garnie, viande tranchée à la broche, crudités fraîches.</p>
+            <div class="star-foot"><span class="star-price">8 €</span><button class="star-add js-open-order"><i data-lucide="plus"></i> Ajouter</button></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDE IMMERSIVE -->
+  <section class="strip">
+    <div class="hero-stage" id="stripStage"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-grain"></div>
+    <div class="strip-in reveal">
+      <span class="kicker" style="justify-content:center">Fabriqué pour être dévoré</span>
+      <h2 style="margin-top:14px">Chaque plat est préparé<br><span>à la commande</span></h2>
+      <p>Pas de bac qui attend sous une lampe. On allume la plancha quand vous commandez.</p>
+      <div class="strip-pills">
+        <span class="pill"><i data-lucide="flame"></i> Steaks saisis minute</span>
+        <span class="pill"><i data-lucide="layers"></i> Cheddar fondant</span>
+        <span class="pill"><i data-lucide="leaf"></i> Crudités fraîches</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="sec-dark">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">En images</span>
+        <h2>Notre cuisine</h2>
+        <p>Un aperçu de ce qui sort de la cuisine chaque jour.</p>
+      </div>
+      <div class="gallery reveal" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="sec-dark" id="avis" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Vos avis comptent</span>
+        <h2>Ce que disent nos clients</h2>
+      </div>
+      <div class="reviews reveal">
+        <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <p>Nos clients partagent leur expérience sur Google. Consultez tous les avis et laissez le vôtre !</p>
+        <div class="reviews-btns">
+          <a class="btn btn-y" href="https://www.google.com/search?q=Kebab+le+burger+Maiche+Avis" target="_blank" rel="noopener"><i data-lucide="star"></i> Voir les avis</a>
+          <a class="btn btn-ghost" href="https://www.google.com/search?q=Kebab+le+burger+Maiche+Avis" target="_blank" rel="noopener"><i data-lucide="pencil"></i> Laisser un avis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORAIRES & CONTACT -->
+  <section class="sec-dark" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Infos pratiques</span>
+        <h2>Horaires & contact</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <h3><i data-lucide="clock"></i> Horaires d'ouverture</h3>
+          <div id="hoursList"></div>
+        </div>
+        <div class="info-card reveal d1">
+          <h3><i data-lucide="map-pin"></i> Nous trouver</h3>
+          <div class="contact-line"><div class="ico"><i data-lucide="map-pin"></i></div><div><div class="lbl">Adresse</div><div class="val">14 rue Montalembert<br>25120 Maîche</div></div></div>
+          <div class="contact-line"><div class="ico"><i data-lucide="phone"></i></div><div><div class="lbl">Téléphone</div><div class="val"><a href="tel:0953086288">09 53 08 62 88</a><br><a href="tel:0769158599">07 69 15 85 99</a></div></div></div>
+          <div class="contact-line"><div class="ico"><i data-lucide="bike"></i></div><div><div class="lbl">Livraison</div><div class="val">Offerte sur Maîche dès 15 €</div></div></div>
+          <a class="btn btn-y map-btn" href="https://www.google.com/maps/search/?api=1&query=Le+Burger+Maiche+14+rue+Montalembert+25120+Maiche" target="_blank" rel="noopener"><i data-lucide="map"></i> Itinéraire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="glow"></div>
+    <img class="final-logo" src="logo.png" alt="Le Burger Maîche">
+    <h2>Alors…<br><span>on commande ?</span></h2>
+    <div class="final-cta">
+      <button class="btn btn-r js-open-order"><i data-lucide="shopping-cart"></i> Commander maintenant</button>
+      <a class="btn btn-ghost" href="tel:0953086288"><i data-lucide="phone"></i> 09 53 08 62 88</a>
+    </div>
+    <div class="modes">Livraison · À emporter · Sur place</div>
+  </section>
+</div>
+
+<!-- ===================== CARTE ===================== -->
+<div id="carteView" hidden>
+  <section class="sec-light dark-txt" id="carte" style="padding-top:34px">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px">
+        <button class="btn btn-od js-home"><i data-lucide="arrow-left"></i> Accueil</button>
+        <button class="btn btn-r js-open-order"><i data-lucide="shopping-cart"></i> Commander</button>
+      </div>
+      <div class="sec-head">
+        <span class="kicker">Notre carte</span>
+        <h2>Tout ce qu'on fait maison</h2>
+      </div>
+    </div>
+
+    <!-- navigation par catégorie -->
+    <div class="cat-nav" id="catNav">
+      <div class="wrap cat-nav-in">
+        <button class="cat-pill on" data-filter="all">Tout</button>
+        <button class="cat-pill" data-filter="burger" data-img="burger">Burgers</button>
+        <button class="cat-pill" data-filter="tacos" data-img="tacos">Tacos</button>
+        <button class="cat-pill" data-filter="sandwich" data-img="sandwich">Sandwichs</button>
+        <button class="cat-pill" data-filter="durum" data-img="durum">Dürüms</button>
+        <button class="cat-pill" data-filter="assiette" data-img="assiette">Assiettes</button>
+        <button class="cat-pill" data-filter="pizza" data-img="pizza">Pizzas</button>
+        <button class="cat-pill" data-filter="pides" data-img="pides">Pides</button>
+        <button class="cat-pill" data-filter="lahmacun" data-img="lahmacun">Lahmacun</button>
+        <button class="cat-pill" data-filter="panini" data-img="panini">Paninis</button>
+        <button class="cat-pill" data-filter="barquette" data-img="barquette">Barquettes</button>
+        <button class="cat-pill" data-filter="salade" data-img="salade">Salades</button>
+        <button class="cat-pill" data-filter="collation" data-img="collation">Collations</button>
+        <button class="cat-pill" data-filter="menus" data-img="menus">Menus</button>
+        <button class="cat-pill" data-filter="dessert" data-img="dessert">Desserts</button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="menu-grid" id="menuGrid">
+        <div class="formule reveal">
+          <div class="big">Menu <span>+3 €</span> — frites + boisson</div>
+          <p>Ajoutez frites + boisson à n'importe quel plat pour seulement 3 € de plus.</p>
+        </div>
+
+        <div class="card reveal" data-cat="burger"><div class="card-head" data-img="burger"><h3>Burgers</h3></div><div class="card-body">
+          <div class="item"><span class="name">Burger 180g</span><span class="lead"></span><span class="price">12 €</span></div>
+          <div class="item"><span class="name">Burger maxi 360g</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Chicken</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Big chicken</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Le Burger spécial <small>onion rings, sauce spéciale</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="item"><span class="name">Le Burger mix <small>poulet et steak de bœuf</small></span><span class="lead"></span><span class="price">17 €</span></div>
+          <div class="subline">Suppléments</div>
+          <div class="item"><span class="name">Supplément fromage</span><span class="lead"></span><span class="price">1 €</span></div>
+          <div class="item"><span class="name">Supplément œuf</span><span class="lead"></span><span class="price">1,5 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1" data-cat="tacos"><div class="card-head" data-img="tacos"><h3>Tacos</h3></div><div class="card-body">
+          <p class="note">Viandes : steak, poulet, kebab, köfte, merguez, cordon bleu, tenders, nuggets, falafel.</p>
+          <div class="item"><span class="name">Tacos M — 1 viande</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Tacos L — 2 viandes</span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Tacos XL — 3 viandes</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Tacos XXL — 4 viandes</span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Gratiné <small>cheddar, raclette, mozzarella</small></span><span class="lead"></span><span class="price free">OFFERT</span></div>
+        </div></div>
+
+        <div class="card reveal d2" data-cat="sandwich"><div class="card-head" data-img="sandwich"><h3>Sandwichs</h3></div><div class="card-body">
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Köfte</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Américain</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Cordon bleu <small>avec fromage</small></span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Falafel</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Toast</span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+
+        <div class="card reveal" data-cat="durum"><div class="card-head" data-img="durum"><h3>Dürüms <span class="tag">Galettes</span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Dürüm kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Maxi kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Dürüm poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm steak</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm merguez</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Dürüm falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Supplément viande</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1" data-cat="assiette"><div class="card-head" data-img="assiette"><h3>Assiettes</h3></div><div class="card-body">
+          <p class="note">Servies avec salade + frites + bulgur.</p>
+          <div class="item"><span class="name">Assiette kebab</span><span class="lead"></span><span class="price">13 €</span></div>
+          <div class="item"><span class="name">Assiette köfte</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette falafel</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette steak</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette merguez</span><span class="lead"></span><span class="price">14 €</span></div>
+          <div class="item"><span class="name">Assiette mix <small>kebab + köfte</small></span><span class="lead"></span><span class="price">15 €</span></div>
+          <div class="item"><span class="name">Assiette adana</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette pilons de poulet</span><span class="lead"></span><span class="price">16 €</span></div>
+          <div class="item"><span class="name">Assiette mix spécial 3 viandes</span><span class="lead"></span><span class="price">19 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2" data-cat="barquette"><div class="card-head" data-img="barquette"><h3>Box</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tacos box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab box</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Box poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Box falafel</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Bucket <small>frites, tenders, nuggets, onion rings, mozza sticks</small></span><span class="lead"></span><span class="price">12 €</span></div>
+        </div></div>
+
+        <div class="card reveal" data-cat="pizza"><div class="card-head" data-img="pizza"><h3>Pizzas</h3></div><div class="card-body">
+          <div class="item"><span class="name">Margharita</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">4 saisons</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Sucuk <small>saucisse turque</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">1 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1" data-cat="pides"><div class="card-head" data-img="pides"><h3>Pides</h3></div><div class="card-body">
+          <div class="item"><span class="name">Pide fromage</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Pide viande hachée</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Pide épinards</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>viande et fromage</small></span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2" data-cat="lahmacun"><div class="card-head" data-img="lahmacun"><h3>Lahmacun</h3></div><div class="card-body">
+          <div class="item"><span class="name">Seul</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Mix <small>poulet et kebab</small></span><span class="lead"></span><span class="price">8 €</span></div>
+        </div></div>
+
+        <div class="card reveal" data-cat="panini"><div class="card-head" data-img="panini"><h3>Paninis</h3></div><div class="card-body">
+          <div class="item"><span class="name">Panini kebab</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini poulet</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini 4 fromages</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Panini steak 180g</span><span class="lead"></span><span class="price">9 €</span></div>
+          <div class="item"><span class="name">Panini mix</span><span class="lead"></span><span class="price">10 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1" data-cat="barquette"><div class="card-head" data-img="barquette"><h3>Barquettes</h3></div><div class="card-body">
+          <div class="item"><span class="name">Tenders <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Nuggets <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Mozza sticks <small>5 unités</small></span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Onion rings <small>5 unités</small></span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Falafel <small>5 unités</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="subline">Frites</div>
+          <div class="item"><span class="name">Petite</span><span class="lead"></span><span class="price">2,50 €</span></div>
+          <div class="item"><span class="name">Moyenne</span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Grande</span><span class="lead"></span><span class="price">5 €</span></div>
+          <div class="item"><span class="name">Frites avec cheddar</span><span class="lead"></span><span class="price">3,50 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2" data-cat="salade"><div class="card-head" data-img="salade"><h3>Salades / Mezzés</h3></div><div class="card-body">
+          <div class="item"><span class="name">César</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Coban <small>salade du berger</small></span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Salade composée de poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Salade de saison</span><span class="lead"></span><span class="price">7 €</span></div>
+        </div></div>
+
+        <div class="card reveal" data-cat="collation"><div class="card-head" data-img="collation"><h3>Collations <span class="tag">Riz</span></h3></div><div class="card-body">
+          <div class="item"><span class="name">Pois chiches</span><span class="lead"></span><span class="price">6 €</span></div>
+          <div class="item"><span class="name">Kebab</span><span class="lead"></span><span class="price">7 €</span></div>
+          <div class="item"><span class="name">Poulet</span><span class="lead"></span><span class="price">8 €</span></div>
+          <div class="item"><span class="name">Supplément</span><span class="lead"></span><span class="price">2 €</span></div>
+        </div></div>
+
+        <div class="card reveal d1" data-cat="menus"><div class="card-head" data-img="menus"><h3>Menus</h3></div><div class="card-body">
+          <div class="item"><span class="name">Étudiant 1 <small>kebab + frites + boisson</small></span><span class="lead"></span><span class="price">10 €</span></div>
+          <div class="item"><span class="name">Étudiant 2 <small>tacos M + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Étudiant 3 <small>burger 100g + frites + boisson</small></span><span class="lead"></span><span class="price">11 €</span></div>
+          <div class="item"><span class="name">Enfant <small>1 viande + frites + boisson + jouet</small></span><span class="lead"></span><span class="price">9 €</span></div>
+        </div></div>
+
+        <div class="card reveal d2" data-cat="dessert"><div class="card-head" data-img="dessert"><h3>Desserts</h3></div><div class="card-body">
+          <div class="item"><span class="name">Baklava <small>3 pièces</small></span><span class="lead"></span><span class="price">4 €</span></div>
+          <div class="item"><span class="name">Tiramisu</span><span class="lead"></span><span class="price">4 €</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="logo.png" alt="Le Burger Maîche">
+    <p class="ftag">14 rue Montalembert · 25120 Maîche · Livraison offerte sur Maîche</p>
+    <div class="fcall">
+      <a href="tel:0953086288"><i data-lucide="phone"></i> 09 53 08 62 88</a>
+      <a href="tel:0769158599"><i data-lucide="phone"></i> 07 69 15 85 99</a>
+    </div>
+    <div class="flinks">
+      <a class="js-legal" data-tab="mentions">Mentions légales</a>
+      <a class="js-legal" data-tab="confidentialite">Politique de confidentialité</a>
+      <a class="js-legal" data-tab="cookies">Cookies</a>
+      <a class="js-cookie-settings">Gérer mes préférences</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> Le Burger Maîche — Tous droits réservés.</div>
+    <div class="credits">Photos et vidéos d'illustration : Pexels (licence libre).</div>
+  </div>
+</footer>
+
+<!-- BOUTON FLOTTANT -->
+<button class="float-order js-open-order" id="floatOrder"><i data-lucide="shopping-cart"></i><span class="txt">Commander</span><span class="cart-count" hidden>0</span></button>
+
+<!-- BARRE MOBILE -->
+<nav class="mobile-bar" aria-label="Navigation rapide">
+  <button class="mb-item js-carte"><i data-lucide="utensils"></i>Carte</button>
+  <button class="mb-item js-home-link" data-target="contact"><i data-lucide="map-pin"></i>Infos</button>
+  <button class="mb-order js-open-order"><i data-lucide="shopping-cart"></i>Commander<span class="cart-count" hidden>0</span></button>
+  <a class="mb-item" href="tel:0953086288"><i data-lucide="phone"></i>Appeler</a>
+</nav>
+
+<!-- ===================== MODALE COMMANDE ===================== -->
+<div class="modal-overlay" id="orderModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="wiz-head">
+      <button class="wiz-back" id="wizBack" hidden aria-label="Retour"><i data-lucide="arrow-left"></i></button>
+      <div class="wiz-titles">
+        <div class="wiz-title" id="wizTitle">Je commande</div>
+        <div class="wiz-sub" id="wizSub">Choisissez une catégorie</div>
+      </div>
+      <button class="modal-close" id="closeOrder" aria-label="Fermer"><i data-lucide="x"></i></button>
+    </div>
+    <div class="wiz-body" id="wizBody"></div>
+    <div class="wiz-foot" id="wizFoot"></div>
+  </div>
+</div>
+
+<!-- ===================== COOKIES ===================== -->
+<div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-label="Préférences cookies">
+  <div class="ck-ico"><i data-lucide="cookie"></i></div>
+  <div class="ck-txt">
+    <h4>Votre vie privée</h4>
+    <p>Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement (mémorisation de votre choix, panier de commande). Aucun cookie publicitaire ni traceur n'est déposé sans votre accord. <a class="js-legal" data-tab="cookies">En savoir plus</a></p>
+  </div>
+  <div class="ck-btns">
+    <button class="btn btn-y" id="ckAccept">Tout accepter</button>
+    <button class="btn btn-od" id="ckRefuse">Essentiels uniquement</button>
+  </div>
+</div>
+
+<!-- ===================== MENTIONS LÉGALES ===================== -->
+<div class="modal-overlay" id="legalModal" hidden>
+  <div class="modal legal-modal" role="dialog" aria-modal="true">
+    <div class="wiz-head">
+      <div class="wiz-titles">
+        <div class="wiz-title">Informations légales</div>
+        <div class="wiz-sub">Le Burger Maîche</div>
+      </div>
+      <button class="modal-close" id="legalClose" aria-label="Fermer"><i data-lucide="x"></i></button>
+    </div>
+    <div class="legal-tabs">
+      <button class="legal-tab on" data-tab="mentions">Mentions légales</button>
+      <button class="legal-tab" data-tab="confidentialite">Confidentialité</button>
+      <button class="legal-tab" data-tab="cookies">Cookies</button>
+    </div>
+    <div class="legal-body">
+
+      <div class="legal-pane" data-pane="mentions">
+        <h4>Éditeur du site</h4>
+        <dl>
+          <dt>Enseigne</dt><dd>Le Burger Maîche</dd>
+          <dt>Adresse</dt><dd>14 rue Montalembert, 25120 Maîche, France</dd>
+          <dt>Téléphone</dt><dd><a href="tel:0953086288">09 53 08 62 88</a> — <a href="tel:0769158599">07 69 15 85 99</a></dd>
+          <dt>Activité</dt><dd>Restauration rapide — vente à emporter et livraison</dd>
+        </dl>
+        <div class="todo">⚠️ À compléter par l'exploitant avant la mise en ligne définitive : raison sociale exacte, forme juridique (SARL, EI…), numéro SIRET, numéro de TVA intracommunautaire, nom du directeur de la publication et adresse e-mail de contact. Ces mentions sont obligatoires (article 6 de la loi n° 2004-575 pour la confiance dans l'économie numérique).</div>
+
+        <h4>Hébergement du site</h4>
+        <dl>
+          <dt>Hébergeur</dt><dd>Netlify, Inc.</dd>
+          <dt>Adresse</dt><dd>512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis</dd>
+          <dt>Site web</dt><dd><a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a></dd>
+        </dl>
+
+        <h4>Propriété intellectuelle</h4>
+        <p>Le logo et l'ensemble des contenus de ce site sont protégés. Toute reproduction sans autorisation est interdite. Les photographies et vidéos d'illustration proviennent de la banque d'images Pexels et sont utilisées sous licence libre.</p>
+
+        <h4>Responsabilité</h4>
+        <p>Les informations (prix, horaires, disponibilité des produits) sont données à titre indicatif et peuvent évoluer. Seule la confirmation téléphonique du restaurant fait foi pour une commande.</p>
+
+        <h4>Médiation de la consommation</h4>
+        <p>Conformément à l'article L.612-1 du Code de la consommation, tout consommateur peut recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable d'un litige.</p>
+        <div class="todo">⚠️ À compléter : nom et coordonnées du médiateur de la consommation auquel le restaurant adhère.</div>
+      </div>
+
+      <div class="legal-pane" data-pane="confidentialite" hidden>
+        <h4>Responsable du traitement</h4>
+        <p>Le Burger Maîche, 14 rue Montalembert, 25120 Maîche.</p>
+        <h4>Données collectées</h4>
+        <p>Lorsque vous passez une commande via le formulaire en ligne, nous collectons uniquement :</p>
+        <ul>
+          <li>votre nom et prénom ;</li>
+          <li>votre numéro de téléphone ;</li>
+          <li>votre adresse de livraison (uniquement en cas de livraison) ;</li>
+          <li>le détail de votre commande et vos éventuelles remarques.</li>
+        </ul>
+        <h4>Finalité et base légale</h4>
+        <p>Ces données servent exclusivement à préparer votre commande, vous rappeler pour la confirmer et, le cas échéant, vous livrer. La base légale est l'exécution de mesures précontractuelles prises à votre demande.</p>
+        <h4>Destinataires</h4>
+        <p>Vos données sont transmises par e-mail au restaurant via le service <strong>Web3Forms</strong>, qui assure l'acheminement du formulaire. Elles ne sont ni revendues, ni utilisées à des fins publicitaires.</p>
+        <h4>Calcul des frais de livraison</h4>
+        <p>Pour les livraisons hors Maîche, l'adresse saisie est envoyée aux services cartographiques <strong>OpenStreetMap</strong> et <strong>OSRM</strong> afin de calculer la distance depuis le restaurant. Cette requête est ponctuelle et n'entraîne aucune conservation de l'adresse par le site.</p>
+        <h4>Durée de conservation</h4>
+        <p>Les e-mails de commande sont conservés par le restaurant le temps nécessaire au traitement et à sa comptabilité.</p>
+        <h4>Vos droits</h4>
+        <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition sur vos données. Pour les exercer, contactez le restaurant au <a href="tel:0953086288">09 53 08 62 88</a>. Vous pouvez également introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+      </div>
+
+      <div class="legal-pane" data-pane="cookies" hidden>
+        <h4>Quels cookies utilisons-nous ?</h4>
+        <p>Ce site est volontairement sobre : il <strong>ne dépose aucun cookie publicitaire, ni traceur, ni outil de mesure d'audience</strong>.</p>
+        <h4>Stockage strictement nécessaire</h4>
+        <ul>
+          <li><strong>Préférence cookies</strong> — conserve votre choix pendant 6 mois pour ne pas réafficher la bannière à chaque visite.</li>
+          <li><strong>Panier de commande</strong> — conservé uniquement en mémoire pendant votre visite, puis effacé à la fermeture de l'onglet.</li>
+        </ul>
+        <p>Ces éléments sont exemptés de consentement au sens des recommandations de la CNIL, car indispensables au fonctionnement du service que vous demandez.</p>
+        <h4>Services externes</h4>
+        <p>Certains contenus proviennent de services tiers susceptibles de recevoir votre adresse IP du simple fait de leur affichage : Google Fonts (polices d'écriture), unpkg (icônes), Pexels (photos et vidéos d'illustration). Aucun de ces services ne reçoit d'information personnelle vous concernant.</p>
+        <h4>Modifier votre choix</h4>
+        <p>Vous pouvez à tout moment <a class="js-cookie-settings">rouvrir le panneau de préférences</a> ou effacer les données de site depuis les réglages de votre navigateur.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
